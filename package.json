@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "publisher": "israelortiz",
   "engines": {
-    "vscode": "^1.96.0"
+    "vscode": "^1.94.0"
   },
   "categories": [
     "Other",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/israelortiz/runbuddy.git"
   },
-  "activationEvents": [],
+  "activationEvents": ["*"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -32,8 +32,21 @@
         "command": "runbuddy.runCommand",
         "title": "Run Command",
         "icon": "$(play)"
+      },
+      {
+        "command": "runbuddy.configureCommands",
+        "title": "Configure RunBuddy Commands"
       }
     ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "runbuddy.runCommand",
+          "group": "navigation",
+          "when": "resourceScheme == file"
+        }
+      ]
+    },
     "configuration": {
       "title": "RunBuddy",
       "properties": {
@@ -73,7 +86,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.96.0",
+    "@types/vscode": "^1.94.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
